@@ -1070,11 +1070,6 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="icon-btn" id="searchBtn" title="Search">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-          </svg>
-        </button>
         <button class="icon-btn" id="cartBtn" title="Cart">
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M6 23 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
@@ -1461,26 +1456,6 @@
       link.addEventListener('click', () => mobileMenu.classList.remove('active'));
     });
 const searchBtn = document.getElementById("searchBtn");
-
-searchBtn.onclick = function () {
-
-    let search = prompt("Search product:");
-
-    if (!search) return;
-
-    let cards = document.querySelectorAll(".product-card");
-
-    cards.forEach(card => {
-
-        if (card.innerText.toLowerCase().includes(search.toLowerCase())) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
-
-    });
-
-};
     renderProducts();
   </script>
 </body>
