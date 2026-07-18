@@ -1070,7 +1070,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="icon-btn" title="Search" onclick="alert('Search Coming Soon 🔍')">
+        <button class="icon-btn" id="searchBtn" title="Search">
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
           </svg>
@@ -1471,7 +1471,27 @@
         setTimeout(() => { productsGrid.style.opacity = '1'; }, 200);
       });
     });
+const searchBtn = document.getElementById("searchBtn");
 
+searchBtn.onclick = function () {
+
+    let search = prompt("Search product:");
+
+    if (!search) return;
+
+    let cards = document.querySelectorAll(".product-card");
+
+    cards.forEach(card => {
+
+        if (card.innerText.toLowerCase().includes(search.toLowerCase())) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+};
     renderProducts();
   </script>
 </body>
