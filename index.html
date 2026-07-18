@@ -1138,7 +1138,7 @@
         </svg>
       </div>
       <h3>Free Shipping</h3>
-      <p>On all orders over $199. Delivered to your doorstep in 3-5 days.</p>
+      <p>On all orders over ₹199. Delivered to your doorstep in 3-5 days.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">
@@ -1322,7 +1322,7 @@
     <div class="cart-footer" id="cartFooter" style="display:none;">
       <div class="cart-total-row">
         <span>Total</span>
-        <span id="cartTotal">$0</span>
+        <span id="cartTotal">₹0</span>
       </div>
       <button class="btn btn-primary checkout-btn" onclick="alert('Call At +91 33378784509 For Checkout🔥 \n Thanks For Buying! Visit Again!❤️')">Checkout</button>
     </div>
@@ -1355,14 +1355,14 @@
     function renderProducts() {
       productsGrid.innerHTML = products.map(p => `
         <div class="product-card">
-          ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-          <img src="${p.img}" alt="${p.name}" class="product-img" loading="lazy" />
+          ₹{p.badge ? `<span class="product-badge">₹{p.badge}</span>` : ''}
+          <img src="₹{p.img}" alt="₹{p.name}" class="product-img" loading="lazy" />
           <div class="product-info">
-            <div class="product-title">${p.name}</div>
-            <div class="product-desc">${p.desc}</div>
+            <div class="product-title">₹{p.name}</div>
+            <div class="product-desc">₹{p.desc}</div>
             <div class="product-row">
-              <div class="product-price">$${p.price}${p.oldPrice ? ` <del>$${p.oldPrice}</del>` : ''}</div>
-              <button class="add-to-cart" onclick="addToCart(${p.id})">
+              <div class="product-price">₹₹{p.price}₹{p.oldPrice ? ` <del>₹₹{p.oldPrice}</del>` : ''}</div>
+              <button class="add-to-cart" onclick="addToCart(₹{p.id})">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
                 </svg>
@@ -1404,7 +1404,7 @@
       const count = cart.reduce((sum, c) => sum + c.qty, 0);
 
       cartCount.textContent = count;
-      cartTotal.textContent = '$' + total;
+      cartTotal.textContent = '₹' + total;
 
       if (cart.length === 0) {
         cartItems.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
@@ -1412,17 +1412,17 @@
       } else {
         cartItems.innerHTML = cart.map(c => `
           <div class="cart-item">
-            <img src="${c.img}" alt="${c.name}" />
+            <img src="₹{c.img}" alt="₹{c.name}" />
             <div class="cart-item-details">
-              <div class="cart-item-title">${c.name}</div>
-              <div class="cart-item-price">$${c.price}</div>
+              <div class="cart-item-title">₹{c.name}</div>
+              <div class="cart-item-price">₹₹{c.price}</div>
  <div class="cart-qty">
-                <button onclick="changeQty(${c.id}, -1)">-</button>
-                <span>${c.qty}</span>
-                <button onclick="changeQty(${c.id}, 1)">+</button>
+                <button onclick="changeQty(₹{c.id}, -1)">-</button>
+                <span>₹{c.qty}</span>
+                <button onclick="changeQty(₹{c.id}, 1)">+</button>
               </div>
             </div>
-            <button class="icon-btn" onclick="removeFromCart(${c.id})" style="color:#999;">
+            <button class="icon-btn" onclick="removeFromCart(₹{c.id})" style="color:#999;">
               <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M18 6 6 18M6 6l12 12"/>
               </svg>
