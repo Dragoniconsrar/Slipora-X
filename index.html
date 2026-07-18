@@ -1460,17 +1460,6 @@
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => mobileMenu.classList.remove('active'));
     });
-
-    // Filter buttons animation (visual only for demo)
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        // Simple shuffle for demo feel
-        productsGrid.style.opacity = '0.5';
-        setTimeout(() => { productsGrid.style.opacity = '1'; }, 200);
-      });
-    });
 const searchBtn = document.getElementById("searchBtn");
 
 searchBtn.onclick = function () {
