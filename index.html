@@ -1171,11 +1171,11 @@
       <p>Our best-selling styles loved by thousands of customers worldwide.</p>
     </div>
     <div class="filters">
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">Men</button>
-      <button class="filter-btn">Women</button>
-      <button class="filter-btn">Kids</button>
-      <button class="filter-btn">Sport {Coming Soon}</button>
+      <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+      <button class="filter-btn" onclick="filterProducts('men')">Men</button>
+      <button class="filter-btn" onclick="filterProducts('women')">Women</button>
+      <button class="filter-btn" onclick="filterProducts('kids')">Kids</button>
+      <button class="filter-btn" onclick="filterProducts('sport')">Sport</button>
     </div>
     <div class="products-grid" id="productsGrid">
       <!-- Products rendered by JS -->
@@ -1367,6 +1367,44 @@
         </div>
       `).join('');
     }
+    function filterProducts(category){
+
+let filtered = category === "all"
+? products
+: products.filter(p => p.category === category);
+
+productsGrid.innerHTML = "";
+
+filtered.forEach(p=>{
+
+productsGrid.innerHTML += `
+<div class="product-card">
+${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+
+<img src="${p.img}" class="product-img">
+
+<div class="product-info">
+<div class="product-title">${p.name}</div>
+<div class="product-desc">${p.desc}</div>
+
+<div class="product-row">
+<div class="product-price">
+₹${p.price}
+${p.oldPrice ? `<del>₹${p.oldPrice}</del>` : ""}
+</div>
+
+<button class="add-to-cart" onclick="addToCart(${p.id})">
+🛒
+</button>
+
+</div>
+</div>
+</div>
+`;
+
+});
+
+}
 
     function addToCart(id) {
       const product = products.find(p => p.id === id);
