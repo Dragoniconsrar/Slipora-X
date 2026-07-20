@@ -1349,7 +1349,7 @@
 
     function renderProducts() {
       productsGrid.innerHTML = products.map(p => `
-        <div class="product-card">
+        <div class="product-card" onclick="openProduct(${p.id})">
           ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
           <img src="${p.img}" alt="${p.name}" class="product-img" loading="lazy" />
           <div class="product-info">
@@ -1500,6 +1500,9 @@ ${p.oldPrice ? `<del>₹${p.oldPrice}</del>` : ""}
     });
 const searchBtn = document.getElementById("searchBtn");
     renderProducts();
+    function openProduct(id) {
+    window.location.href = `product.html?id=${id}`;
+}
   </script>
 </body>
 </html>
