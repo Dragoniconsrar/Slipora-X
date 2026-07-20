@@ -1,1 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Step X | Product Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+
+--primary:#39ff14;
+--secondary:#121212;
+--accent:#ff6b4a;
+--light:#1b1b1b;
+--text:#ffffff;
+--muted:#9ca3af;
+--radius:18px;
+
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+
+}
+
+body{
+
+background:
+radial-gradient(circle at top right,rgba(57,255,20,.05),transparent 35%),
+radial-gradient(circle at bottom left,rgba(255,107,74,.05),transparent 35%),
+#0b0b0d;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+a{
+
+text-decoration:none;
+color:inherit;
+
+}
+
+header{
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+background:rgba(15,15,15,.75);
+
+backdrop-filter:blur(14px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+nav{
+
+max-width:1300px;
+
+margin:auto;
+
+padding:18px 30px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:700;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.logo span{
+
+color:var(--primary);
+
+}
+
+.backBtn{
+
+padding:12px 24px;
+
+background:var(--primary);
+
+border-radius:50px;
+
+color:#111;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.backBtn:hover{
+
+transform:translateY(-2px);
+
+}
+
+.wrapper{
+
+max-width:1350px;
+
+margin:auto;
+
+padding:60px 25px;
+
+display:grid;
+
+grid-template-columns:110px 1fr 1fr;
+
+gap:45px;
+
+}
+
+.gallery{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.thumb{
+
+height:95px;
+
+border-radius:16px;
+
+overflow:hidden;
+
+background:#181818;
+
+cursor:pointer;
+
+border:2px solid transparent;
+
+transition:.3s;
+
+}
+
+.thumb:hover{
+
+border-color:var(--primary);
+
+}
+
+.thumb img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+.preview{
+
+background:#181818;
+
+border-radius:25px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:40px;
+
+min-height:620px;
+
+}
+
+.preview img{
+
+max-width:100%;
+
+max-height:520px;
+
+transition:.35s;
+
+cursor:zoom-in;
+
+}
+
+.preview img:hover{
+
+transform:scale(1.08);
+
+}
+
+.info{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:var(--primary);
+
+color:#111;
+
+font-size:13px;
+
+font-weight:700;
+
+border-radius:30px;
+
+width:max-content;
+
+margin-bottom:20px;
+
+}
+
+.title{
+
+font-size:48px;
+
+font-weight:700;
+
+line-height:1.2;
+
+margin-bottom:15px;
+
+}
+
+.rating{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.rating .star{
+
+color:gold;
+
+font-size:20px;
+
+}
+
+.price{
+
+font-size:46px;
+
+font-weight:700;
+
+color:var(--primary);
+
+margin-bottom:5px;
+
+}
+
+.oldPrice{
+
+color:#888;
+
+font-size:22px;
+
+text-decoration:line-through;
+
+margin-left:15px;
+
+}
+
+.discount{
+
+margin-left:15px;
+
+font-size:22px;
+
+font-weight:700;
+
+color:var(--accent);
+
+}
+
+.desc{
+
+margin-top:25px;
+
+line-height:1.9;
+
+color:#bdbdbd;
+
+font-size:17px;
+
+}
+
+.features{
+
+margin-top:35px;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+}
+
+.feature{
+
+background:#181818;
+
+padding:18px;
+
+border-radius:16px;
+
+}
+
+.feature h3{
+
+font-size:17px;
+
+margin-bottom:8px;
+
+}
+
+.feature p{
+
+color:#999;
+
+font-size:14px;
+
+}
+  .sizeTitle{
+
+margin-top:40px;
+
+margin-bottom:15px;
+
+font-size:18px;
+
+font-weight:600;
+
+}
+
+.sizes{
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+}
+
+.size{
+
+width:60px;
+
+height:60px;
+
+background:#181818;
+
+border:2px solid rgba(255,255,255,.08);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:14px;
+
+cursor:pointer;
+
+transition:.3s;
+
+font-weight:600;
+
+}
+
+.size:hover,
+.size.active{
+
+background:var(--primary);
+
+color:#111;
+
+border-color:var(--primary);
+
+}
+
+.buttons{
+
+margin-top:35px;
+
+display:flex;
+
+gap:18px;
+
+}
+
+.buyBtn{
+
+flex:1;
+
+padding:18px;
+
+border:none;
+
+border-radius:16px;
+
+background:var(--primary);
+
+color:#111;
+
+font-size:18px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.buyBtn:hover{
+
+transform:translateY(-4px);
+
+}
+
+.cartBtn{
+
+flex:1;
+
+padding:18px;
+
+border-radius:16px;
+
+border:2px solid var(--primary);
+
+background:transparent;
+
+color:var(--primary);
+
+font-size:18px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.cartBtn:hover{
+
+background:var(--primary);
+
+color:#111;
+
+}
+
+.delivery{
+
+margin-top:35px;
+
+background:#181818;
+
+padding:22px;
+
+border-radius:18px;
+
+line-height:2;
+
+color:#bbb;
+
+}
+
+.delivery b{
+
+color:var(--primary);
+
+}
+
+.related{
+
+max-width:1350px;
+
+margin:auto;
+
+padding:40px 25px 90px;
+
+}
+
+.related h2{
+
+font-size:34px;
+
+margin-bottom:35px;
+
+}
+
+.relatedGrid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.relatedCard{
+
+background:#181818;
+
+border-radius:18px;
+
+overflow:hidden;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.relatedCard:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 45px rgba(0,0,0,.4);
+
+}
+
+.relatedCard img{
+
+width:100%;
+
+height:240px;
+
+object-fit:cover;
+
+}
+
+.relatedInfo{
+
+padding:18px;
+
+}
+
+.relatedInfo h3{
+
+font-size:18px;
+
+margin-bottom:8px;
+
+}
+
+.relatedInfo p{
+
+font-size:22px;
+
+font-weight:700;
+
+color:var(--primary);
+
+}
+
+footer{
+
+margin-top:60px;
+
+padding:40px;
+
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+color:#777;
+
+}
+
+@media(max-width:1100px){
+
+.wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+.gallery{
+
+flex-direction:row;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.preview{
+
+min-height:420px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+nav{
+
+padding:16px;
+
+}
+
+.logo{
+
+font-size:24px;
+
+}
+
+.wrapper{
+
+padding:25px 18px;
+
+}
+
+.title{
+
+font-size:34px;
+
+}
+
+.price{
+
+font-size:34px;
+
+}
+
+.features{
+
+grid-template-columns:1fr;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+}
+
+.related h2{
+
+font-size:28px;
+
+}
+
+}
+
+</style>
+
+</head>
+  <body>
+
+<header>
+<nav>
+
+<div class="logo">
+Step <span>X</span>
+</div>
+
+<a href="index.html" class="backBtn">← Back to Shop</a>
+
+</nav>
+</header>
+
+<div class="wrapper">
+
+<div class="gallery" id="thumbs">
+
+</div>
+
+<div class="preview">
+
+<img id="mainImage" src="" alt="Product">
+
+</div>
+
+<div class="info">
+
+<div class="badge" id="badge">
+Best Seller
+</div>
+
+<h1 class="title" id="title">
+Loading...
+</h1>
+
+<div class="rating">
+
+<div class="star">
+★★★★★
+</div>
+
+<span>4.8 (2,540 Reviews)</span>
+
+</div>
+
+<div>
+
+<span class="price" id="price">
+₹0
+</span>
+
+<span class="oldPrice" id="oldPrice">
+</span>
+
+<span class="discount" id="discount">
+</span>
+
+</div>
+
+<p class="desc" id="desc">
+Loading...
+</p>
+
+<div class="features">
+
+<div class="feature">
+
+<h3>Premium Quality</h3>
+
+<p>Comfortable all day wear.</p>
+
+</div>
+
+<div class="feature">
+
+<h3>Free Shipping</h3>
+
+<p>Across India.</p>
+
+</div>
+
+<div class="feature">
+
+<h3>Easy Returns</h3>
+
+<p>7 Days replacement.</p>
+
+</div>
+
+<div class="feature">
+
+<h3>Secure Payment</h3>
+
+<p>100% Safe Checkout.</p>
+
+</div>
+
+</div>
+
+<h3 class="sizeTitle">
+Select Size
+</h3>
+
+<div class="sizes">
+
+<div class="size active">6</div>
+
+<div class="size">7</div>
+
+<div class="size">8</div>
+
+<div class="size">9</div>
+
+<div class="size">10</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="buyBtn">
+
+Buy Now
+
+</button>
+
+<button class="cartBtn" id="addCartBtn">
+
+Add to Cart
+
+</button>
+
+</div>
+
+<div class="delivery">
+
+<b>Delivery:</b> 2-5 Business Days
+<br><br>
+
+<b>Cash on Delivery:</b> Available
+
+<br><br>
+
+<b>Warranty:</b> 30 Days
+
+</div>
+
+</div>
+
+</div>
+
+<section class="related">
+
+<h2>Related Products</h2>
+
+<div class="relatedGrid" id="relatedProducts">
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Step X. All Rights Reserved.
+
+</footer>
+
+<script>
+  // ================================
+// STEP X PRODUCT PAGE (PART 4A)
+// ================================
+
+// IMPORTANT:
+// Copy the SAME products[] array from index.html here.
+// Example:
+// const products = [
+//   { id:1, category:"...", name:"...", desc:"...", price:999, oldPrice:1499, img:"images/1.jpg", badge:"New" },
+//   ...
+// ];
+
+const params = new URLSearchParams(window.location.search);
+const productId = Number(params.get("id"));
+
+const product = products.find(p => p.id === productId);
+
+if (!product) {
+    document.body.innerHTML = `
+        <div style="
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        background:#0b0b0d;
+        color:white;
+        font-family:Poppins,sans-serif;">
+            <h1>Product Not Found</h1>
+            <br>
+            <a href="index.html"
+            style="
+            color:black;
+            background:#39ff14;
+            padding:14px 28px;
+            border-radius:12px;
+            text-decoration:none;
+            font-weight:bold;">
+            Back to Shop
+            </a>
+        </div>
+    `;
+    throw new Error("Invalid Product");
+}
+
+const title = document.getElementById("title");
+const desc = document.getElementById("desc");
+const price = document.getElementById("price");
+const oldPrice = document.getElementById("oldPrice");
+const discount = document.getElementById("discount");
+const badge = document.getElementById("badge");
+const mainImage = document.getElementById("mainImage");
+const thumbs = document.getElementById("thumbs");
+
+title.textContent = product.name;
+desc.textContent = product.desc;
+price.textContent = "₹" + product.price;
+oldPrice.textContent = "₹" + product.oldPrice;
+badge.textContent = product.badge || "Premium";
+
+const off = Math.round(
+((product.oldPrice - product.price) / product.oldPrice) * 100
+);
+
+discount.textContent = off + "% OFF";
+
+mainImage.src = product.img;
+
+const gallery = [
+product.img,
+product.img,
+product.img,
+product.img
+];
+
+gallery.forEach(image=>{
+
+const box=document.createElement("div");
+
+box.className="thumb";
+
+box.innerHTML=`
+<img src="${image}">
+`;
+
+box.onclick=()=>{
+
+mainImage.src=image;
+
+};
+
+thumbs.appendChild(box);
+
+});
+
+document.title = product.name + " | Step X";
+
+// Size selector
+
+document.querySelectorAll(".size").forEach(btn=>{
+
+btn.onclick=()=>{
+
+document.querySelectorAll(".size")
+.forEach(s=>s.classList.remove("active"));
+
+btn.classList.add("active");
+
+};
+
+});
+
+// ======================
+// Continue in Part 4B...
+// ======================
+  // ==========================
+// ADD TO CART
+// ==========================
+
+const cartBtn = document.getElementById("addCartBtn");
+
+cartBtn.onclick = () => {
+
+    let cart = JSON.parse(localStorage.getItem("stepx-cart")) || [];
+
+    const exists = cart.find(item => item.id === product.id);
+
+    if (!exists) {
+
+        cart.push({
+            ...product,
+            qty: 1
+        });
+
+    } else {
+
+        exists.qty++;
+
+    }
+
+    localStorage.setItem(
+        "stepx-cart",
+        JSON.stringify(cart)
+    );
+
+    cartBtn.innerHTML = "✓ Added";
+
+    setTimeout(() => {
+
+        cartBtn.innerHTML = "Add to Cart";
+
+    },1500);
+
+};
+
+// ==========================
+// BUY NOW
+// ==========================
+
+document.querySelector(".buyBtn").onclick = () => {
+
+    localStorage.setItem(
+        "buyNow",
+        JSON.stringify(product)
+    );
+
+    alert("Checkout page will be added soon!");
+
+};
+
+// ==========================
+// RELATED PRODUCTS
+// ==========================
+
+const related = document.getElementById("relatedProducts");
+
+products
+.filter(p => p.category === product.category && p.id !== product.id)
+.slice(0,4)
+.forEach(item=>{
+
+const card=document.createElement("div");
+
+card.className="relatedCard";
+
+card.onclick=()=>{
+
+window.location.href=
+`product.html?id=${item.id}`;
+
+};
+
+card.innerHTML=`
+
+<img src="${item.img}">
+
+<div class="relatedInfo">
+
+<h3>${item.name}</h3>
+
+<p>₹${item.price}</p>
+
+</div>
+
+`;
+
+related.appendChild(card);
+
+});
+
+// ==========================
+// IMAGE ZOOM
+// ==========================
+
+mainImage.addEventListener("mousemove",()=>{
+
+mainImage.style.transform="scale(1.15)";
+
+});
+
+mainImage.addEventListener("mouseleave",()=>{
+
+mainImage.style.transform="scale(1)";
+
+});
+
+// ==========================
+// END
+// ==========================
+
+</script>
+
+</body>
+
+</html>
+  
+  
+  
 
