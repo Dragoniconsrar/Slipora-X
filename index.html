@@ -1339,7 +1339,9 @@ opacity:1;
         <span>Total</span>
         <span id="cartTotal">₹0</span>
       </div>
-      <button class="btn btn-primary checkout-btn" onclick="alert('Call At +91 33378784509 For Checkout🔥 \n Thanks For Buying! Visit Again!❤️')">Checkout</button>
+      <button class="btn btn-primary checkout-btn" onclick="goToCheckout()">
+    Checkout
+</button>
     </div>
   </div>
 
@@ -1522,6 +1524,10 @@ const searchBtn = document.getElementById("searchBtn");
     renderProducts();
     function openProduct(id) {
     window.location.href = `product.html?id=${id}`;
+}
+    function goToCheckout(){
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "checkout.html";
 }
   </script>
 </body>
