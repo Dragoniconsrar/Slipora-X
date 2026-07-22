@@ -726,7 +726,7 @@
 
     /* Mobile Menu */
     .mobile-menu {
-      display: none;
+      display:flex;
       position: fixed;
       inset: 0;
       background: var(--white);
@@ -734,13 +734,18 @@
       padding: 6rem 2rem 2rem;
       flex-direction: column;
       gap: 1.5rem;
- transform: translateX(100%);
+      transform: translateX(100%);
       transition: transform 0.3s ease;
+      visibility:hidden;
+      opacity:0;
     }
 
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
+    .mobile-menu.active{
+    display:flex;
+    transform:translateX(0);
+      visibility:visible;
+opacity:1;
+}
 
     .mobile-menu a {
       font-size: 1.3rem;
