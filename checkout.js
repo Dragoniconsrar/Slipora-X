@@ -120,14 +120,29 @@ function saveCart(){
 
 }
 
-document.querySelector(".order-btn").onclick=function(){
+document.querySelector(".order-btn").onclick = function () {
 
-    alert("🎉 Order Placed Successfully!");
+    const name = document.querySelector('input[placeholder="Full Name"]').value.trim();
+    const phone = document.querySelector('input[placeholder="Phone Number"]').value.trim();
+    const email = document.querySelector('input[placeholder="Email Address"]').value.trim();
+    const address = document.querySelector("textarea").value.trim();
+
+    if (!name || !phone || !email || !address) {
+        alert("Please fill all shipping details.");
+        return;
+    }
+
+    if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+    }
+
+    alert("🎉 Order Placed Successfully!\n\nThank you for shopping with STEP X.");
 
     localStorage.removeItem("cart");
 
-    location.href="index.html";
-
+    window.location.href = "index.html";
 }
 
 renderCart();
+let deliveryCharge = total >= 499 ? 0 : 49;
