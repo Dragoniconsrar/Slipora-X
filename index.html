@@ -1420,7 +1420,7 @@ ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
 ${p.oldPrice ? `<del>₹${p.oldPrice}</del>` : ""}
 </div>
 
-<button class="add-to-cart" onclick="addToCart(${p.id})">
+<button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${p.id})">
 🛒
 </button>
 
