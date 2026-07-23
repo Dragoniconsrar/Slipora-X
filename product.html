@@ -1029,7 +1029,26 @@ document.querySelector(".buyBtn").onclick = () => {
         JSON.stringify(product)
     );
 
-    alert("Checkout page will be added soon!");
+    buyNowBtn.addEventListener("click", () => {
+
+    if(!selectedProduct){
+        alert("No product selected.");
+        return;
+    }
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify([
+            {
+                ...selectedProduct,
+                qty:1
+            }
+        ])
+    );
+
+    window.location.href="checkout.html";
+
+});
 
 };
 
