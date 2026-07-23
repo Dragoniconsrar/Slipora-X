@@ -1,256 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Step X | Checkout</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Step X | Secure Checkout</title>
 
-<style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-body{
-background:#0d0d0d;
-color:#fff;
-padding:40px 20px;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:30px;
-}
-
-.box{
-background:#181818;
-padding:25px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,.08);
-}
-
-h2{
-margin-bottom:20px;
-}
-
-input,textarea{
-
-width:100%;
-padding:14px;
-margin-bottom:15px;
-
-background:#111;
-border:1px solid #333;
-border-radius:10px;
-
-color:white;
-font-size:15px;
-}
-
-textarea{
-height:120px;
-resize:none;
-}
-
-.order-item{
-
-display:flex;
-justify-content:space-between;
-
-padding:12px 0;
-
-border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.total{
-
-display:flex;
-justify-content:space-between;
-
-margin-top:20px;
-
-font-size:22px;
-font-weight:bold;
-
-color:#39ff14;
-}
-
-.payment{
-
-margin:25px 0;
-}
-
-.payment label{
-
-display:block;
-
-padding:14px;
-
-margin-bottom:12px;
-
-background:#111;
-
-border-radius:10px;
-
-cursor:pointer;
-
-border:1px solid #333;
-}
-
-button{
-
-width:100%;
-
-padding:16px;
-
-background:#39ff14;
-
-border:none;
-
-border-radius:50px;
-
-font-size:18px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.3s;
-}
-
-button:hover{
-
-transform:translateY(-2px);
-
-box-shadow:0 0 20px #39ff14;
-}
-
-@media(max-width:800px){
-
-.container{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-</style>
+<link rel="stylesheet" href="checkout.css">
 
 </head>
+
 <body>
 
-<div class="container">
+<!-- ================= NAVBAR ================= -->
 
-<div class="box">
+<header class="navbar">
+
+<div class="logo">
+
+STEP <span>X</span>
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="index.html#products">Shop</a>
+
+<a href="index.html#contact">Contact</a>
+
+</nav>
+
+</header>
+
+<!-- ================= TITLE ================= -->
+
+<section class="hero">
+
+<h1>🔒 Secure Checkout</h1>
+
+<p>Complete your purchase securely with Step X.</p>
+
+</section>
+
+<!-- ================= MAIN ================= -->
+
+<main class="checkout-container">
+
+<!-- LEFT -->
+
+<section class="checkout-left">
+
+<div class="card">
 
 <h2>Shipping Details</h2>
 
-<input placeholder="Full Name">
+<input
+type="text"
+id="name"
+placeholder="Full Name">
 
-<input placeholder="Phone Number">
+<input
+type="text"
+id="phone"
+placeholder="Phone Number">
 
-<input placeholder="Email">
+<input
+type="email"
+id="email"
+placeholder="Email Address">
 
-<textarea placeholder="Full Address"></textarea>
+<textarea
+id="address"
+placeholder="Full Address"></textarea>
 
-<div class="payment">
+</div>
+
+<div class="card">
 
 <h2>Payment Method</h2>
 
-<label>
-<input type="radio" checked>
+<label class="payment-option">
+
+<input
+type="radio"
+name="payment"
+checked>
+
 Cash On Delivery
+
 </label>
 
-<label>
-<input type="radio" disabled>
+<label class="payment-option disabled">
+
+<input
+type="radio"
+disabled>
+
 UPI (Coming Soon)
+
 </label>
 
 </div>
 
-<button onclick="placeOrder()">
-Place Order
+</section>
+
+<!-- RIGHT -->
+
+<aside class="checkout-right">
+
+<div class="card">
+
+<h2>Your Order</h2>
+
+<div id="cartItems">
+
+<!-- JS Will Add Products -->
+
+</div>
+
+<hr>
+
+<div class="summary">
+
+<div class="summary-row">
+
+<span>Subtotal</span>
+
+<span id="subtotal">
+
+₹0
+
+</span>
+
+</div>
+
+<div class="summary-row">
+
+<span>Delivery</span>
+
+<span id="delivery">
+
+FREE
+
+</span>
+
+</div>
+
+<div class="summary-row">
+
+<span>Discount</span>
+
+<span id="discount">
+
+₹0
+
+</span>
+
+</div>
+
+<hr>
+
+<div class="summary-row grand-total">
+
+<span>Grand Total</span>
+
+<span id="grandTotal">
+
+₹0
+
+</span>
+
+</div>
+
+<button id="placeOrderBtn">
+
+PLACE ORDER
+
 </button>
 
 </div>
 
-<div class="box">
-
-<h2>Your Order</h2>
-
-<div id="orderList"></div>
-
-<div class="total">
-
-<span>Total</span>
-
-<span id="total">₹0</span>
-
 </div>
 
-</div>
+</aside>
 
-</div>
+</main>
 
-<script>
-
-const cart=JSON.parse(localStorage.getItem("cart"))||[];
-
-const order=document.getElementById("orderList");
-
-let total=0;
-
-cart.forEach(item=>{
-
-total+=item.price*item.qty;
-
-order.innerHTML+=`
-
-<div class="order-item">
-
-<div>
-
-<b>${item.name}</b><br>
-
-${item.qty} × ₹${item.price}
-
-</div>
-
-<div>
-
-₹${item.price*item.qty}
-
-</div>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("total").innerText="₹"+total;
-
-function placeOrder(){
-
-alert("🎉 Order Placed Successfully!\n\nThank You For Shopping With Step X ❤️");
-
-localStorage.removeItem("cart");
-
-window.location.href="index.html";
-
-}
-
-</script>
+<script src="checkout.js"></script>
 
 </body>
+
 </html>
