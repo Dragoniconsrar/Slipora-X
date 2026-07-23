@@ -986,7 +986,7 @@ const cartBtn = document.getElementById("addCartBtn");
 
 cartBtn.onclick = () => {
 
-    let cart = JSON.parse(localStorage.getItem("stepx-cart")) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const exists = cart.find(item => item.id === product.id);
 
@@ -1004,8 +1004,8 @@ cartBtn.onclick = () => {
     }
 
     localStorage.setItem(
-        "stepx-cart",
-        JSON.stringify(cart)
+    "cart",
+    JSON.stringify(cart)
     );
 
     cartBtn.innerHTML = "✓ Added";
@@ -1024,31 +1024,16 @@ cartBtn.onclick = () => {
 
 document.querySelector(".buyBtn").onclick = () => {
 
-    localStorage.setItem(
-        "buyNow",
-        JSON.stringify(product)
-    );
+    const checkoutCart = [
+        {
+            ...product,
+            qty: 1
+        }
+    ];
 
-    buyNowBtn.addEventListener("click", () => {
+    localStorage.setItem("cart", JSON.stringify(checkoutCart));
 
-    if(!selectedProduct){
-        alert("No product selected.");
-        return;
-    }
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify([
-            {
-                ...selectedProduct,
-                qty:1
-            }
-        ])
-    );
-
-    window.location.href="checkout.html";
-
-});
+    window.location.href = "checkout.html";
 
 };
 
