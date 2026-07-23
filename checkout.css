@@ -1,175 +1,505 @@
+/* ===========================
+   GOOGLE FONT RESET
+=========================== */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#0d0d0d;
-    color:#fff;
+background:#0b0b0b;
+color:#fff;
 }
 
-/* Header */
+/* ===========================
+   NAVBAR
+=========================== */
 
-.header{
-    height:80px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    background:#111;
-    position:sticky;
-    top:0;
-    z-index:1000;
+.navbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 8%;
+
+background:#111;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+position:sticky;
+top:0;
+z-index:999;
 }
 
 .logo{
-    font-size:32px;
-    font-weight:700;
-    letter-spacing:2px;
+
+font-size:32px;
+font-weight:700;
+
+letter-spacing:2px;
+
+color:#fff;
 }
 
 .logo span{
-    color:#39ff14;
+
+color:#39ff14;
+
 }
 
-/* Layout */
+nav{
+
+display:flex;
+gap:35px;
+
+}
+
+nav a{
+
+text-decoration:none;
+color:#ddd;
+
+font-size:16px;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#39ff14;
+
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+text-align:center;
+
+padding:55px 20px;
+
+}
+
+.hero h1{
+
+font-size:42px;
+
+margin-bottom:10px;
+
+}
+
+.hero p{
+
+color:#999;
+
+font-size:17px;
+
+}
+
+/* ===========================
+   MAIN
+=========================== */
 
 .checkout-container{
-    width:90%;
-    max-width:1400px;
-    margin:50px auto;
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:35px;
+
+max-width:1400px;
+
+margin:auto;
+
+padding:30px;
+
+display:grid;
+
+grid-template-columns:1.7fr 1fr;
+
+gap:35px;
+
 }
 
-/* Cards */
+/* ===========================
+   CARD
+=========================== */
 
-.left-panel,
-.right-panel{
-    background:#171717;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 0 25px rgba(57,255,20,.08);
+.card{
+
+background:#161616;
+
+padding:30px;
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+margin-bottom:25px;
+
+transition:.35s;
+
 }
 
-/* Heading */
+.card:hover{
 
-h2{
-    margin-bottom:22px;
-    font-size:24px;
+transform:translateY(-4px);
+
+border-color:#39ff14;
+
 }
 
-.payment-heading{
-    margin-top:35px;
+/* ===========================
+   HEADINGS
+=========================== */
+
+.card h2{
+
+margin-bottom:20px;
+
+font-size:24px;
+
 }
 
-/* Inputs */
+/* ===========================
+   INPUTS
+=========================== */
 
-.input-group{
-    margin-bottom:18px;
+input,
+textarea{
+
+width:100%;
+
+padding:16px;
+
+margin-bottom:16px;
+
+background:#0f0f0f;
+
+border:1px solid #2f2f2f;
+
+border-radius:12px;
+
+color:white;
+
+font-size:15px;
+
+outline:none;
+
+transition:.3s;
+
 }
 
-.input-group input,
-.input-group textarea{
-    width:100%;
-    padding:16px;
-    background:#0f0f0f;
-    color:white;
-    border:1px solid #2a2a2a;
-    border-radius:12px;
-    font-size:15px;
-    outline:none;
-    transition:.3s;
-}
+input:focus,
+textarea:focus{
 
-.input-group input:focus,
-.input-group textarea:focus{
-    border-color:#39ff14;
-    box-shadow:0 0 12px rgba(57,255,20,.3);
+border-color:#39ff14;
+
+box-shadow:0 0 12px rgba(57,255,20,.25);
+
 }
 
 textarea{
-    height:120px;
-    resize:none;
+
+height:120px;
+
+resize:none;
+
 }
 
-/* Payment */
+/* ===========================
+   PAYMENT
+=========================== */
 
 .payment-option{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:18px;
-    font-size:16px;
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:16px;
+
+margin-top:12px;
+
+border-radius:14px;
+
+background:#101010;
+
+border:1px solid #292929;
+
+cursor:pointer;
+
+transition:.3s;
+
 }
 
-.payment-option.disabled{
-    opacity:.5;
+.payment-option:hover{
+
+border-color:#39ff14;
+
 }
 
-/* Button */
+.payment-option input{
 
-.order-btn{
-    width:100%;
-    margin-top:30px;
-    padding:18px;
-    border:none;
-    border-radius:14px;
-    background:#39ff14;
-    color:#000;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.3s;
+accent-color:#39ff14;
+
 }
 
-.order-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 18px rgba(57,255,20,.5);
+.disabled{
+
+opacity:.45;
+
+cursor:not-allowed;
+
 }
 
-/* Cart */
+/* ===========================
+   CART
+=========================== */
 
 #cartItems{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:20px;
+
 }
 
-/* Summary */
+/* JS se add hoga */
+
+.cart-item{
+
+display:flex;
+
+gap:18px;
+
+align-items:center;
+
+padding-bottom:20px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.cart-image{
+
+width:100px;
+
+height:100px;
+
+object-fit:cover;
+
+border-radius:14px;
+
+background:white;
+
+padding:8px;
+
+}
+
+.cart-details{
+
+flex:1;
+
+}
+
+.cart-details h3{
+
+margin-bottom:6px;
+
+font-size:18px;
+
+}
+
+.price{
+
+color:#39ff14;
+
+font-weight:700;
+
+margin-top:6px;
+
+}
+
+/* ===========================
+   QUANTITY
+=========================== */
+
+.quantity{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin-top:12px;
+
+}
+
+.quantity button{
+
+width:34px;
+
+height:34px;
+
+border:none;
+
+border-radius:8px;
+
+background:#39ff14;
+
+color:#000;
+
+font-size:20px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.quantity button:hover{
+
+transform:scale(1.08);
+
+}
+
+.quantity span{
+
+font-size:16px;
+
+font-weight:600;
+
+}
+
+/* ===========================
+   REMOVE
+=========================== */
+
+.remove-btn{
+
+margin-top:12px;
+
+padding:9px 15px;
+
+border:none;
+
+border-radius:8px;
+
+background:#ff3d3d;
+
+color:white;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.remove-btn:hover{
+
+background:red;
+
+}
+
+/* ===========================
+   SUMMARY
+=========================== */
 
 .summary{
-    margin-top:30px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.1);
+
+margin-top:20px;
+
 }
 
 .summary-row{
-    display:flex;
-    justify-content:space-between;
-    margin:15px 0;
-    font-size:17px;
+
+display:flex;
+
+justify-content:space-between;
+
+padding:14px 0;
+
+font-size:17px;
+
 }
 
-.summary-row.total{
-    font-size:24px;
-    color:#39ff14;
-    font-weight:700;
+.summary hr{
+
+border:none;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+margin:10px 0;
+
 }
 
-hr{
-    border:none;
-    border-top:1px solid rgba(255,255,255,.12);
-    margin:18px 0;
+.grand-total{
+
+font-size:24px;
+
+font-weight:bold;
+
+color:#39ff14;
+
 }
 
-/* Mobile */
+/* ===========================
+   BUTTON
+=========================== */
 
-@media(max-width:900px){
+#placeOrderBtn{
+
+width:100%;
+
+padding:18px;
+
+margin-top:20px;
+
+border:none;
+
+border-radius:50px;
+
+background:#39ff14;
+
+color:#000;
+
+font-size:18px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+#placeOrderBtn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 0 25px rgba(57,255,20,.45);
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:950px){
 
 .checkout-container{
 
@@ -177,78 +507,58 @@ grid-template-columns:1fr;
 
 }
 
-.header{
+.navbar{
 
-height:70px;
+flex-direction:column;
 
-}
-
-.logo{
-
-font-size:26px;
+gap:15px;
 
 }
 
-.left-panel,
-.right-panel{
+nav{
 
-padding:25px;
-
-}
-
-}
-.cart-item{
-display:flex;
 gap:20px;
-background:#111;
-padding:15px;
-border-radius:15px;
-margin-bottom:20px;
-align-items:center;
+
 }
 
-.cart-img{
-width:100px;
-height:100px;
-object-fit:cover;
-border-radius:12px;
-background:#fff;
+.hero h1{
+
+font-size:32px;
+
 }
 
-.cart-info{
-flex:1;
+.card{
+
+padding:22px;
+
 }
 
-.cart-info h3{
-margin-bottom:8px;
-font-size:18px;
+.cart-item{
+
+flex-direction:column;
+
+text-align:center;
+
 }
 
-.qty{
-display:flex;
-align-items:center;
-gap:12px;
-margin:15px 0;
+.cart-image{
+
+width:140px;
+
+height:140px;
+
 }
 
-.qty button{
-width:35px;
-height:35px;
-border:none;
-background:#39ff14;
-color:#000;
-font-size:20px;
-font-weight:bold;
-border-radius:8px;
-cursor:pointer;
+.quantity{
+
+justify-content:center;
+
 }
 
 .remove-btn{
-border:none;
-background:#ff3b3b;
-color:#fff;
-padding:10px 16px;
-border-radius:8px;
-cursor:pointer;
-margin-top:10px;
+
+width:100%;
+
+}
+
 }
