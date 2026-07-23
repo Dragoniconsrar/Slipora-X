@@ -1357,7 +1357,7 @@ opacity:1;
       { id: 8,category: "men",name: "Luxe Leather", desc: "Full-grain leather, memory foam", price: 495, oldPrice: 520, img: "https://plus.unsplash.com/premium_vector-1756045319838-d5e607ca2ce9?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", badge: "Premium" },
     ];
 
-    let cart = [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const productsGrid = document.getElementById('productsGrid');
     const cartBtn = document.getElementById('cartBtn');
@@ -1460,6 +1460,7 @@ ${p.oldPrice ? `<del>₹${p.oldPrice}</del>` : ""}
     }
 
     function updateCart() {
+      localStorage.setItem("cart", JSON.stringify(cart));
       const total = cart.reduce((sum, c) => sum + c.price * c.qty, 0);
       const count = cart.reduce((sum, c) => sum + c.qty, 0);
 
@@ -1522,6 +1523,7 @@ ${p.oldPrice ? `<del>₹${p.oldPrice}</del>` : ""}
     });
 const searchBtn = document.getElementById("searchBtn");
     renderProducts();
+    updateCart();
     function openProduct(id) {
     window.location.href = `product.html?id=${id}`;
 }
