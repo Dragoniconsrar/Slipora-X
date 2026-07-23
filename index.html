@@ -1380,6 +1380,10 @@ opacity:1;
             <div class="product-row">
               <div class="product-price">₹${p.price}${p.oldPrice ? ` <del>₹${p.oldPrice}</del>` : ''}</div>
               <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${p.id})">
+              <button class="btn btn-primary"
+              onclick="event.stopPropagation(); buyNow(${p.id})">
+              Buy Now
+              </button>
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
                 </svg>
@@ -1526,6 +1530,17 @@ const searchBtn = document.getElementById("searchBtn");
     updateCart();
     function openProduct(id) {
     window.location.href = `product.html?id=${id}`;
+}
+    function buyNow(id){
+
+    const product = products.find(p => p.id === id);
+
+    localStorage.setItem("cart", JSON.stringify([
+        {...product, qty:1}
+    ]));
+
+    window.location.href = "checkout.html";
+
 }
     function goToCheckout(){
 
