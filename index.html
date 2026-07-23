@@ -1427,9 +1427,19 @@ ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
 ${p.oldPrice ? `<del>₹${p.oldPrice}</del>` : ""}
 </div>
 
-<button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${p.id})">
+<div style="display:flex;gap:8px;align-items:center;">
+
+<button class="add-to-cart"
+onclick="event.stopPropagation(); addToCart(${p.id})">
 🛒
 </button>
+
+<button class="btn btn-primary"
+onclick="event.stopPropagation(); buyNow(${p.id})">
+Buy Now
+</button>
+
+</div>
 <button class="btn btn-primary"
 onclick="event.stopPropagation(); buyNow(${p.id})">
     Buy Now
