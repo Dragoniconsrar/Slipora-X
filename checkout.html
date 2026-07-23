@@ -23,11 +23,21 @@
 
 <header class="navbar">
 
-<div class="logo">
+<div class="container nav-container">
 
-STEP <span>X</span>
+<a href="index.html" class="logo">
 
-</div>
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+<path d="M4 14a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2"/>
+
+<path d="M6 14v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6"/>
+
+</svg>
+
+Step <span>X</span>
+
+</a>
 
 <nav>
 
@@ -39,73 +49,103 @@ STEP <span>X</span>
 
 </nav>
 
+</div>
+
 </header>
 
-<!-- ================= TITLE ================= -->
+<!-- ================= HERO ================= -->
 
-<section class="hero">
+<section class="checkout-hero">
 
 <h1>🔒 Secure Checkout</h1>
 
-<p>Complete your purchase securely with Step X.</p>
+<p>
+Your order is protected with secure checkout.
+</p>
 
 </section>
 
 <!-- ================= MAIN ================= -->
 
-<main class="checkout-container">
+<main class="checkout-wrapper">
 
-<!-- LEFT -->
+<!-- ================= LEFT ================= -->
 
 <section class="checkout-left">
 
-<div class="card">
+<div class="glass-card">
 
 <h2>Shipping Details</h2>
+
+<div class="input-group">
+
+<label>Full Name</label>
 
 <input
 type="text"
 id="name"
-placeholder="Full Name">
+placeholder="Enter your full name">
+
+</div>
+
+<div class="input-group">
+
+<label>Phone Number</label>
 
 <input
-type="text"
+type="tel"
 id="phone"
-placeholder="Phone Number">
+placeholder="Enter phone number">
+
+</div>
+
+<div class="input-group">
+
+<label>Email Address</label>
 
 <input
 type="email"
 id="email"
-placeholder="Email Address">
-
-<textarea
-id="address"
-placeholder="Full Address"></textarea>
+placeholder="Enter email">
 
 </div>
 
-<div class="card">
+<div class="input-group">
+
+<label>Delivery Address</label>
+
+<textarea
+id="address"
+placeholder="House No, Street, City, State..."></textarea>
+
+</div>
+
+</div>
+
+<!-- PAYMENT -->
+
+<div class="glass-card">
 
 <h2>Payment Method</h2>
 
-<label class="payment-option">
+<label class="payment-card">
 
 <input
 type="radio"
 name="payment"
 checked>
 
-Cash On Delivery
+<span>Cash On Delivery</span>
 
 </label>
 
-<label class="payment-option disabled">
+<label class="payment-card disabled">
 
 <input
 type="radio"
 disabled>
 
-UPI (Coming Soon)
+<span>UPI (Coming Soon)</span>
 
 </label>
 
@@ -113,21 +153,45 @@ UPI (Coming Soon)
 
 </section>
 
-<!-- RIGHT -->
+<!-- ================= RIGHT ================= -->
 
 <aside class="checkout-right">
 
-<div class="card">
+<div class="glass-card">
 
 <h2>Your Order</h2>
 
 <div id="cartItems">
 
-<!-- JS Will Add Products -->
+<!-- JavaScript Will Render Products Here -->
+
+</div>
+<!-- ================= COUPON ================= -->
+
+<div class="coupon-box">
+
+<h3>Have a Coupon?</h3>
+
+<div class="coupon-input">
+
+<input
+type="text"
+id="couponCode"
+placeholder="Enter coupon code">
+
+<button id="applyCouponBtn">
+
+Apply
+
+</button>
 
 </div>
 
-<hr>
+<p id="couponMessage"></p>
+
+</div>
+
+<!-- ================= SUMMARY ================= -->
 
 <div class="summary">
 
@@ -183,7 +247,7 @@ FREE
 
 <button id="placeOrderBtn">
 
-PLACE ORDER
+Place Order
 
 </button>
 
@@ -195,8 +259,19 @@ PLACE ORDER
 
 </main>
 
+<!-- ================= FOOTER ================= -->
+
+<footer class="checkout-footer">
+
+<p>
+
+© 2026 Step X. All Rights Reserved.
+
+</p>
+
+</footer>
+
 <script src="checkout.js"></script>
 
 </body>
-
 </html>
