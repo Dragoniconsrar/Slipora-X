@@ -1,108 +1,180 @@
-// Load Cart
+/* ==========================================
+   STEP X CHECKOUT V2
+   PART 3A
+========================================== */
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+let discount = 0;
+
 const cartItems = document.getElementById("cartItems");
+
 const subtotal = document.getElementById("subtotal");
+
 const delivery = document.getElementById("delivery");
+
+const discountText = document.getElementById("discount");
+
 const grandTotal = document.getElementById("grandTotal");
+
+const saveCart = () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+/* ===========================
+RENDER CART
+=========================== */
 
 function renderCart() {
 
-    cartItems.innerHTML = "";
-
-    if(cart.length === 0){
+    if (cart.length === 0) {
 
         cartItems.innerHTML = `
-            <h3 style="text-align:center;padding:40px;">
-                Your Cart is Empty 🛒
-            </h3>
+        <div class="empty-cart">
+
+            <h3>Your cart is empty 🛒</h3>
+
+            <p>Add products before checkout.</p>
+
+        </div>
         `;
 
-        subtotal.innerText="₹0";
-        delivery.innerText="₹0";
-        grandTotal.innerText="₹0";
+        subtotal.textContent = "₹0";
+
+        delivery.textContent = "₹0";
+
+        discountText.textContent = "-₹0";
+
+        grandTotal.textContent = "₹0";
 
         return;
     }
 
-    let total=0;
+    cartItems.innerHTML = "";
 
-    cart.forEach((item,index)=>{
+    let total = 0;
 
-        total += item.price * (item.qty || 1);
+    cart.forEach((item, index) => {
+
+        total += item.price * item.qty;
 
         cartItems.innerHTML += `
 
-        <div class="cart-item">
+<div class="cart-item">
 
-            <img src="${item.img}" class="cart-img">
+<img
+src="${item.img}"
+class="cart-image"
+alt="${item.name}">
 
-            <div class="cart-info">
+<div class="cart-details">
 
-                <h3>${item.name}</h3>
+<h4>${item.name}</h4>
 
-                <p>₹${item.price}</p>
+<p>${item.desc}</p>
 
-                <div class="qty">
+<div class="cart-price">
 
-                    <button onclick="decreaseQty(${index})">−</button>
+₹${item.price}
 
-                    <span>${item.qty || 1}</span>
+</div>
 
-                    <button onclick="increaseQty(${index})">+</button>
+<div class="quantity">
 
-                </div>
+<button onclick="decreaseQty(${index})">
 
-                <button class="remove-btn"
-                onclick="removeItem(${index})">
+−
 
-                🗑 Remove
+</button>
 
-                </button>
+<span>
 
-            </div>
+${item.qty}
 
-        </div>
+</span>
 
-        `;
+<button onclick="increaseQty(${index})">
+
++
+
+</button>
+
+</div>
+
+<button
+class="remove-btn"
+onclick="removeItem(${index})">
+
+Remove
+
+</button>
+
+</div>
+
+</div>
+
+`;
 
     });
 
-    let deliveryCharge=0;
+    let deliveryCharge = total >= 499 ? 0 : 49;
 
-    if(total<499){
+    let finalTotal =
+        total +
+        deliveryCharge -
+        discount;
 
-        deliveryCharge=49;
+    subtotal.textContent =
+        "₹" + total;
 
-    }
+    delivery.textContent =
+        deliveryCharge === 0
+        ? "FREE"
+        : "₹" + deliveryCharge;
 
-    subtotal.innerText="₹"+total;
+    discountText.textContent =
+        "-₹" + discount;
 
-    delivery.innerText=deliveryCharge==0?"FREE":"₹"+deliveryCharge;
-
-    grandTotal.innerText="₹"+(total+deliveryCharge);
+    grandTotal.textContent =
+        "₹" + finalTotal;
 
 }
 
+/* ===========================
+QUANTITY
+=========================== */
+
 function increaseQty(index){
 
-    cart[index].qty=(cart[index].qty||1)+1;
+    cart[index].qty++;
 
     saveCart();
+
+    renderCart();
 
 }
 
 function decreaseQty(index){
 
-    if((cart[index].qty||1)>1){
+    if(cart[index].qty>1){
 
         cart[index].qty--;
+
+    }else{
+
+        cart.splice(index,1);
 
     }
 
     saveCart();
 
+    renderCart();
+
 }
+
+/* ===========================
+REMOVE
+=========================== */
 
 function removeItem(index){
 
@@ -110,39 +182,128 @@ function removeItem(index){
 
     saveCart();
 
-}
-
-function saveCart(){
-
-    localStorage.setItem("cart",JSON.stringify(cart));
-
     renderCart();
 
 }
 
-document.querySelector(".order-btn").onclick = function () {
-
-    const name = document.querySelector('input[placeholder="Full Name"]').value.trim();
-    const phone = document.querySelector('input[placeholder="Phone Number"]').value.trim();
-    const email = document.querySelector('input[placeholder="Email Address"]').value.trim();
-    const address = document.querySelector("textarea").value.trim();
-
-    if (!name || !phone || !email || !address) {
-        alert("Please fill all shipping details.");
-        return;
-    }
-
-    if (cart.length === 0) {
-        alert("Your cart is empty.");
-        return;
-    }
-
-    alert("🎉 Order Placed Successfully!\n\nThank you for shopping with STEP X.");
-
-    localStorage.removeItem("cart");
-
-    window.location.href = "index.html";
-}
+/* ===========================
+INITIAL LOAD
+=========================== */
 
 renderCart();
-let deliveryCharge = total >= 499 ? 0 : 49;
+/* ===========================
+COUPON
+=========================== */
+
+const couponInput = document.getElementById("couponCode");
+const couponBtn = document.getElementById("applyCouponBtn");
+const couponMessage = document.getElementById("couponMessage");
+
+let couponApplied = false;
+
+couponBtn.addEventListener("click", () => {
+
+    const code = couponInput.value.trim().toUpperCase();
+
+    if (couponApplied) {
+
+        couponMessage.style.color = "#ffd43b";
+        couponMessage.textContent = "Coupon already applied.";
+        return;
+
+    }
+
+    let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+    if (code === "STEPX10") {
+
+        discount = Math.floor(total * 0.10);
+
+        couponApplied = true;
+
+        couponMessage.style.color = "#39ff14";
+        couponMessage.textContent = "Coupon applied successfully!";
+
+    } else {
+
+        discount = 0;
+
+        couponMessage.style.color = "#ff4d4f";
+        couponMessage.textContent = "Invalid coupon code.";
+
+    }
+
+    renderCart();
+
+});
+
+/* ===========================
+PLACE ORDER
+=========================== */
+
+const placeOrderBtn = document.getElementById("placeOrderBtn");
+
+placeOrderBtn.addEventListener("click", () => {
+
+    const name = document.getElementById("name").value.trim();
+
+    const phone = document.getElementById("phone").value.trim();
+
+    const email = document.getElementById("email").value.trim();
+
+    const address = document.getElementById("address").value.trim();
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty.");
+        return;
+
+    }
+
+    if (!name || !phone || !email || !address) {
+
+        alert("Please fill all shipping details.");
+        return;
+
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+
+        alert("Enter a valid 10-digit phone number.");
+        return;
+
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+
+        alert("Enter a valid email address.");
+        return;
+
+    }
+
+    placeOrderBtn.disabled = true;
+    placeOrderBtn.textContent = "Placing Order...";
+
+    setTimeout(() => {
+
+        alert(
+`🎉 Order Placed Successfully!
+
+Thank you for shopping with Step X.
+
+Your order has been confirmed.`
+        );
+
+        cart = [];
+
+        discount = 0;
+
+        couponApplied = false;
+
+        localStorage.removeItem("cart");
+
+        window.location.href = "index.html";
+
+    }, 1500);
+
+});
