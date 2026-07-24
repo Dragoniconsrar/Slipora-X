@@ -4,6 +4,12 @@
 ========================================== */
 import { db } from "./firebase.js";
 
+import {
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let discount = 0;
