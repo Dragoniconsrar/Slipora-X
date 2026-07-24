@@ -1425,7 +1425,7 @@ ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
 <div class="product-row">
 <div class="product-price">
 ₹${p.price}
-${p.oldPrice ? `<del>₹${p.oldPrice}</del>` : ""}
+${p.oldPrice ? `<br><del>₹${p.oldPrice}</del>` : `<br>&nbsp;`}
 </div>
 
 <div style="display:flex;gap:8px;align-items:center;">
