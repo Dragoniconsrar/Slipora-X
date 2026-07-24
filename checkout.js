@@ -254,7 +254,7 @@ PLACE ORDER
 
 const placeOrderBtn = document.getElementById("placeOrderBtn");
 
-placeOrderBtn.addEventListener("click", () => {
+placeOrderBtn.addEventListener("click", async () => {
 
     const name = document.getElementById("name").value.trim();
 
@@ -295,26 +295,65 @@ placeOrderBtn.addEventListener("click", () => {
     placeOrderBtn.disabled = true;
     placeOrderBtn.textContent = "Placing Order...";
 
-    setTimeout(() => {
+    try {
 
-        alert(
-`🎉 Order Placed Successfully!
+    const total = cart.reduce(
+        (sum, item) => sum + (item.price * item.qty),
+        0
+    );
+
+    const deliveryCharge = total >= 499 ? 0 : 49;
+
+    const finalTotal = total + deliveryCharge - discount;
+
+    await addDoc(collection(db, "orders"), {
+
+        customer: {
+            name,
+            phone,
+            email,
+            address
+        },
+
+        items: cart,
+
+        subtotal: total,
+
+        delivery: deliveryCharge,
+
+        discount,
+
+        grandTotal: finalTotal,
+
+        payment: "Cash On Delivery",
+
+        status: "Pending",
+
+        createdAt: serverTimestamp()
+
+    });
+
+    alert(`🎉 Order Placed Successfully!
 
 Thank you for shopping with Step X.
 
-Your order has been confirmed.`
-        );
+Your order has been confirmed.`);
 
-        cart = [];
+    cart = [];
+    discount = 0;
+    couponApplied = false;
 
-        discount = 0;
+    localStorage.removeItem("cart");
 
-        couponApplied = false;
+    window.location.href = "index.html";
 
-        localStorage.removeItem("cart");
+} catch (error) {
 
-        window.location.href = "index.html";
+    console.error(error);
 
-    }, 1500);
+    alert("❌ Order save failed. Please try again.");
 
-});
+    placeOrderBtn.disabled = false;
+    placeOrderBtn.textContent = "Place Order";
+
+}
