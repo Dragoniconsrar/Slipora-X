@@ -2,6 +2,7 @@
    STEP X CHECKOUT V2
    PART 3A
 ========================================== */
+import { db } from "./firebase.js";
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
