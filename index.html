@@ -1388,10 +1388,20 @@ opacity:1;
               <path d="M16 10a4 4 0 0 1-8 0"/>
               </svg>
               </button>
-              <button class="btn btn-primary"
-              onclick="event.stopPropagation(); buyNow(${p.id})">
-              Buy Now
-              </button>
+              ${p.price == 0 ?
+
+`<button class="btn" style="background:#666;color:white;">
+Coming Soon
+</button>`
+
+:
+
+`<button class="btn btn-primary"
+onclick="event.stopPropagation(); buyNow(${p.id})">
+Buy Now
+</button>`
+
+}
             </div>
           </div>
         </div>
@@ -1437,14 +1447,10 @@ onclick="event.stopPropagation(); addToCart(${p.id})">
 
 <button class="btn btn-primary"
 onclick="event.stopPropagation(); buyNow(${p.id})">
-Buy Now
+${p.price == 0 ? "Coming Soon" : "Buy Now"}
 </button>
 
 </div>
-<button class="btn btn-primary"
-onclick="event.stopPropagation(); buyNow(${p.id})">
-    Buy Now
-</button>
 
 </div>
 </div>
