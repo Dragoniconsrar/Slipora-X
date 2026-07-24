@@ -1030,15 +1030,16 @@ cartBtn.onclick = () => {
 document.querySelector(".buyBtn").onclick = () => {
 
     const checkoutCart = [
-        {
-    ...product,
-    size: selectedSize,
-    qty:1
-}
+    {
+        ...product,
+        size: selectedSize,
+        qty:1
+    }
+];
 
-    localStorage.setItem("cart", JSON.stringify(checkoutCart));
+localStorage.setItem("cart", JSON.stringify(checkoutCart));
 
-    window.location.href = "checkout.html";
+window.location.href = "checkout.html";
 
 };
 
