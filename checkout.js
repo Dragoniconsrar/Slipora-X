@@ -357,3 +357,5 @@ Your order has been confirmed.`);
     placeOrderBtn.textContent = "Place Order";
 
 }
+
+});
