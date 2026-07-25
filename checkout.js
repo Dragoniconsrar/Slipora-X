@@ -81,7 +81,7 @@ alt="${item.name}">
 <p>${item.desc}</p>
 
 <div class="cart-size">
-    Size: <strong>${JSON.stringify(item)}</strong>
+    Size: <strong>${item.size}</strong>
 </div>
 
 <div class="cart-price">
