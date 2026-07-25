@@ -78,8 +78,6 @@ alt="${item.name}">
 
 <h4>${item.name}</h4>
 
-<h3>${item.name}</h3>
-
 <p>${item.desc}</p>
 
 <div class="cart-size">
