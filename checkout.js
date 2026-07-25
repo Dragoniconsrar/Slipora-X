@@ -195,6 +195,10 @@ function removeItem(index){
 
 }
 
+window.increaseQty = increaseQty;
+window.decreaseQty = decreaseQty;
+window.removeItem = removeItem;
+
 /* ===========================
 INITIAL LOAD
 =========================== */
