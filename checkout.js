@@ -309,6 +309,7 @@ placeOrderBtn.addEventListener("click", async () => {
     const finalTotal = total + deliveryCharge - discount;
 
     await addDoc(collection(db, "orders"), {
+       orderId: "STX-" + Date.now(),
 
         customer: {
             name,
