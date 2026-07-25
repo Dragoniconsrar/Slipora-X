@@ -309,33 +309,34 @@ placeOrderBtn.addEventListener("click", async () => {
     const finalTotal = total + deliveryCharge - discount;
 
     await addDoc(collection(db, "orders"), {
-       orderId: "STX-" + Date.now(),
 
-        customer: {
-            name,
-            phone,
-            email,
-            address
-        },
+    orderId: "STX-" + Date.now(),
 
-        items: cart,
+    customer: {
+        name,
+        phone,
+        email,
+        address
+    },
 
-        subtotal: total,
+    items: cart,
 
-        delivery: deliveryCharge,
+    subtotal: total,
 
-        discount,
+    delivery: deliveryCharge,
 
-        grandTotal: finalTotal,
+    discount,
 
-        payment: "Cash On Delivery",
+    grandTotal: finalTotal,
 
-        status: "Pending",
+    payment: "Cash On Delivery",
 
-        createdAt: serverTimestamp()
+    status: "Pending",
 
-    });
+    createdAt: serverTimestamp()
 
+});
+       
     alert(`🎉 Order Placed Successfully!
 
 Thank you for shopping with Step X.
