@@ -78,6 +78,8 @@ alt="${item.name}">
 
 <h4>${item.name}</h4>
 
+<h3>${item.name}</h3>
+
 <p>${item.desc}</p>
 
 <div class="cart-size">
@@ -85,9 +87,7 @@ alt="${item.name}">
 </div>
 
 <div class="cart-price">
-
 ₹${item.price}
-
 </div>
 
 <div class="quantity">
